@@ -17,6 +17,27 @@ class CarService {
             return []
         }
     }
+
+    async addCar(brand, model, year, maxSpeed, numberOfDoors, isAutomatic, engine) {
+        try {
+            const { data } = await this.httpClient.post(
+                'api/cars',
+                {
+                    brand: brand,
+                    model: model,
+                    year: year,
+                    maxSpeed: maxSpeed,
+                    numberOfDoors: numberOfDoors,
+                    isAutomatic: isAutomatic,
+                    engine: engine
+                })
+
+            return data;
+        } catch (error) {
+            return []
+        }
+    }
+
 }
 
 export default new CarService()

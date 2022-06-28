@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CarService from "../services/CarService";
 import axios from 'axios';
 function AppCars() {
@@ -6,16 +6,20 @@ function AppCars() {
 
     const [cars, setCars] = useState([])
 
-    async function getData() {
-        try {
-            const cars = await CarService.getAll()
+    const getCars = useEffect(() => {
+        async function getCars() {
 
-            //setPosts(cars)
-            console.log(cars)
-        } catch (error) {
-            console.log(error)
+            try {
+                const cars = await CarService.getAll()
+
+                setCars(cars)
+            } catch (error) {
+                console.log(error)
+            }
         }
-    }
+
+        getCars()
+    }, [])
     return (
 
         <div className="App">
@@ -25,7 +29,7 @@ function AppCars() {
             <ol>
                 {cars.map((car) => <li key={car.id}>{car.brand}</li>)}
             </ol>
-            <button onClick={getData}>Dovuci podatke</button>
+            <button onClick={getCars}>Dovuci podatke</button>
         </div>
     )
 }
