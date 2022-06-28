@@ -45,6 +45,17 @@ function AddCar() {
 
 
     }
+    const reset = () => {
+        setNewCar({
+            brand: '',
+            model: '',
+            year: '',
+            maxSpeed: '',
+            numberOfDoors: '',
+            isAutomatic: '',
+            engine: ''
+        });
+    };
 
     return (
         <div>
@@ -100,6 +111,7 @@ function AddCar() {
                 <label for="electric">Electric</label>
                 <input type="radio" id="hybrid" name="hybrid" value="hybrid" onChange={({ target }) => setNewCar({ ...newCar, engine: target.value })} />
                 <label for="hybrid">Hybrid</label>
+                <button type='button' onClick={reset}>Reset</button>
                 <button>Add car</button>
 
             </form>
