@@ -3,9 +3,11 @@
 import axios from 'axios'
 
 class CarService {
-    constructor() {
-        this.httpClient = axios.get('http://localhost:3000/explorer');
 
+    constructor() {
+        this.httpClient = axios.create({
+            baseURL: 'http://localhost:3000'
+        })
     }
 
     async getAll() {
@@ -17,6 +19,7 @@ class CarService {
             return []
         }
     }
+
 
     async addCar(brand, model, year, maxSpeed, numberOfDoors, isAutomatic, engine) {
         try {
