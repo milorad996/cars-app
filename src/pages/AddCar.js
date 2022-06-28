@@ -73,10 +73,12 @@ function AddCar() {
 
 
             <form onSubmit={addNewCar} style={{ display: 'flex', flexDirection: 'column', width: 200, marginLeft: 15 }}>
-                <input type="text" value={newCar.brand} placeholder="Brand" onChange={({ target }) => setNewCar({ ...newCar, brand: target.value })} />
-                <input type="text" value={newCar.model} placeholder="Model" onChange={({ target }) => setNewCar({ ...newCar, model: target.value })} />
+                <input minLength={2}
+                    required type="text" value={newCar.brand} placeholder="Brand" onChange={({ target }) => setNewCar({ ...newCar, brand: target.value })} />
+                <input minLength={2}
+                    required type="text" value={newCar.model} placeholder="Model" onChange={({ target }) => setNewCar({ ...newCar, model: target.value })} />
                 <label htmlFor="cars">Choose a year:</label>
-                <select style={{ width: 200 }} onChange={({ target }) => setNewCar({ ...newCar, year: target.value })} value={newCar.year}>
+                <select required style={{ width: 200 }} onChange={({ target }) => setNewCar({ ...newCar, year: target.value })} value={newCar.year}>
                     <option value="1990">1990</option>
                     <option value="1991">1991</option>
                     <option value="1992">1992</option>
@@ -108,10 +110,10 @@ function AddCar() {
                     <option value="2018">2018</option>
                 </select>
                 <input type="number" value={newCar.maxSpeed} placeholder="Max speed" onChange={({ target }) => setNewCar({ ...newCar, maxSpeed: target.value })} />
-                <input type="number" value={newCar.numberOfDoors} placeholder="Number of doors" onChange={({ target }) => setNewCar({ ...newCar, numberOfDoors: target.value })} />
-                <input type="checkbox" id="vehicle1" name="vehicle1" value='Automatic' onChange={({ target }) => setNewCar({ ...newCar, isAutomatic: target.value })} />
+                <input required type="number" value={newCar.numberOfDoors} placeholder="Number of doors" onChange={({ target }) => setNewCar({ ...newCar, numberOfDoors: target.value })} />
+                <input required type="checkbox" id="vehicle1" name="vehicle1" value='Automatic' onChange={({ target }) => setNewCar({ ...newCar, isAutomatic: target.value })} />
                 <label htmlFor="vehicle1">Automatic</label>
-                <input type="checkbox" id="vehicle2" name="vehicle2" value='Manual' onChange={({ target }) => setNewCar({ ...newCar, isAutomatic: target.value })} />
+                <input required type="checkbox" id="vehicle2" name="vehicle2" value='Manual' onChange={({ target }) => setNewCar({ ...newCar, isAutomatic: target.value })} />
                 <label htmlFor="vehicle2">Manual</label>
                 <p>Please select your favorite engine:</p>
                 <input type="radio" id="diesel" name="diesel" value="diesel" onChange={({ target }) => setNewCar({ ...newCar, engine: target.value })} />
